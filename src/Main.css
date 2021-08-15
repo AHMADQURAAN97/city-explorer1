@@ -1,0 +1,23 @@
+h1 {
+    text-align: center;
+    background-color: darkkhaki;
+}
+
+form {
+    text-align: center;
+    width: 200px;
+    margin-left: 590px;
+    margin-top: 30px;
+}
+
+
+.para {
+font-size: 20px;
+margin-left: 100px;
+background-color: blanchedalmond;
+}
+
+.img{ 
+    margin-left: 100px;
+    border-radius: 5px;
+}
