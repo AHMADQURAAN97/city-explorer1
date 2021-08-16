@@ -29,7 +29,7 @@ selectLocation = async (e) => {
 
   })
 
-let placeURL = `https://eu1.locationiq.com/v1/search.php?key=pk.b72f636506faa3cf5c9f31dbb231730b&q=irbid&format=json`
+let placeURL = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_KEY}&q=${this.state.searchCity}&format=json`
 
 let resultData = await axios.get(placeURL)
 
