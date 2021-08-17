@@ -34,7 +34,7 @@ selectLocation = async (e) => {
 
 let placeURL = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_KEY}&q=${this.state.searchCity}&format=json`
 
-let placeURL2 = `${process.env.REACT_APP_SERVER_LINK}/weather?cName=${this.state.searchCity}`;
+let placeURL2 = `${process.env.REACT_APP_SERVER_LINK}weather?cName=${this.state.searchCity}`;
 
 let resultData = await axios.get(placeURL)
 let resultData2 = await axios.get(placeURL2)
