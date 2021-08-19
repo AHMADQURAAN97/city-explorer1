@@ -4,9 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
-import Table from "react-bootstrap/Table";
-import { Carousel } from "react-bootstrap";
 import Movie from "./components/Movie.js";
+import Weather from "./components/weather.js";
+import { Carousel } from "react-bootstrap";
+
 
 import "./Main.css";
 
@@ -52,13 +53,12 @@ class App extends React.Component {
         proDataForSplice[index].poster ===
           "https://image.tmdb.org/t/p/original//6tn0pNVvTfFTREKOfixksU8QCSV.jpg"
       ) {
-        //  THIS CODE IS TO CLEAN THE MOVIE LIST FROM ADULT CONTENT, MY GODNESS
 
         proDataForSplice.splice(index, 1);
       }
     }
 
-     this.setState({
+    this.setState({
       Obweather: resultData2.data,
       Obmovie: proDataForSplice,
       cityData: resultData.data[0],
@@ -69,9 +69,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="imgp">
+      <div className="main">
+        <>
         <h1>City-Explorer</h1>
-     
 
         <Form onSubmit={this.selectLocation}>
           <Form.Select name="search" aria-label="Default select example">
@@ -87,21 +87,24 @@ class App extends React.Component {
 
         <div className="imgto">
           <div className="tab2">
-            <Carousel>
-              {this.state.showData &&
-                this.state.Obmovie.map((item, i) => {
-                  return (
-                    <Carousel.Item>
-                      <Movie
-                        key={i}
-                        title={item.title}
-                        poster={item.poster}
-                        state={this.state}
-                      />
-                    </Carousel.Item>
-                  );
-                })}
-            </Carousel>
+          <Carousel>
+
+            {this.state.showData &&
+              this.state.Obmovie.map((item, i) => {
+                return (
+                  <Carousel.Item>
+
+                    <Movie
+                      key={i}
+                      title={item.title}
+                      poster={item.poster}
+                      state={this.state}
+                    />
+                  </Carousel.Item>
+
+                );
+              })}
+              </Carousel>
           </div>
 
           <div className="para">
@@ -122,20 +125,20 @@ class App extends React.Component {
             )}
           </div>
         </div>
-        <div>
-{this.state.showData && this.state.Obweather.map((item, i) => {
+
+        <div className="tab">
+          {this.state.showData &&
+            this.state.Obweather.map((item, i) => {
               return (
-                <Table striped bordered hover>
-                  <tbody key={i}>
-                    <tr>
-                    <th>Date: {item.date}</th>
-                    <th>description: {item.description}</th>
-                    </tr>
-                  </tbody>
-                </Table>
+                <Weather
+                  key={i}
+                  date={item.date}
+                  description={item.description}
+                />
               );
             })}
-</div>
+        </div>
+        </>
       </div>
     );
   }
